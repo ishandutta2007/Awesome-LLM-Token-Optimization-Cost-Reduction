@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 440" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080b14" />
+      <stop offset="40%" stop-color="#0d1326" />
+      <stop offset="100%" stop-color="#05070e" />
+    </linearGradient>
+
+    <linearGradient id="accentGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6366f1" />
+      <stop offset="50%" stop-color="#a855f7" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="60%" stop-color="#f1f5f9" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+
+    <!-- Grid Pattern -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255, 255, 255, 0.035)" stroke-width="1" />
+    </pattern>
+
+    <!-- Filter for Glow Effects -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="24" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <style>
+    .title-text {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+    .subtitle-text {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-weight: 400;
+    }
+    .pill-text {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+    }
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.28; transform: scale(1); }
+      50% { opacity: 0.55; transform: scale(1.12); }
+    }
+    @keyframes dashStream {
+      to { stroke-dashoffset: -40; }
+    }
+    @keyframes floatPill {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-5px); }
+    }
+    .glow-sphere-1 {
+      animation: pulseGlow 8s ease-in-out infinite;
+      transform-origin: 220px 130px;
+    }
+    .glow-sphere-2 {
+      animation: pulseGlow 10s ease-in-out infinite alternate;
+      transform-origin: 1060px 290px;
+    }
+    .stream-line {
+      stroke-dasharray: 8, 12;
+      animation: dashStream 2s linear infinite;
+    }
+    .float-item-1 { animation: floatPill 5s ease-in-out infinite; }
+    .float-item-2 { animation: floatPill 6s ease-in-out infinite 1s; }
+    .float-item-3 { animation: floatPill 5.5s ease-in-out infinite 2s; }
+  </style>
+
+  <!-- Background Base -->
+  <rect width="1280" height="440" fill="url(#bgGradient)" />
+  <rect width="1280" height="440" fill="url(#grid)" />
+
+  <!-- Animated Glowing Ambience (Strictly in Background) -->
+  <circle class="glow-sphere-1" cx="220" cy="130" r="160" fill="#6366f1" filter="url(#glow)" />
+  <circle class="glow-sphere-2" cx="1060" cy="290" r="180" fill="#06b6d4" filter="url(#glow)" />
+  <circle cx="640" cy="220" r="130" fill="#a855f7" opacity="0.15" filter="url(#glow)" />
+
+  <!-- Decorative Circuit / Streamlines (Background) -->
+  <path class="stream-line" d="M 100 80 Q 300 20 640 70 T 1180 60" fill="none" stroke="rgba(99, 102, 241, 0.25)" stroke-width="2" />
+  <path class="stream-line" d="M 100 380 Q 400 420 740 370 T 1180 390" fill="none" stroke="rgba(6, 182, 212, 0.25)" stroke-width="2" />
+
+  <!-- Visual Dashboard Card Accents in Lower Background -->
+  <g class="float-item-1" opacity="0.9">
+    <rect x="170" y="325" width="260" height="42" rx="21" fill="rgba(15, 23, 42, 0.75)" stroke="rgba(99, 102, 241, 0.4)" stroke-width="1.5" />
+    <circle cx="195" cy="346" r="6" fill="#6366f1" />
+    <text x="215" y="351" fill="#e2e8f0" class="pill-text">Prompt Compression (20x)</text>
+  </g>
+
+  <g class="float-item-2" opacity="0.9">
+    <rect x="475" y="325" width="290" height="42" rx="21" fill="rgba(15, 23, 42, 0.75)" stroke="rgba(168, 85, 247, 0.4)" stroke-width="1.5" />
+    <circle cx="500" cy="346" r="6" fill="#a855f7" />
+    <text x="520" y="351" fill="#e2e8f0" class="pill-text">Semantic Cache &amp; Radix KV</text>
+  </g>
+
+  <g class="float-item-3" opacity="0.9">
+    <rect x="805" y="325" width="275" height="42" rx="21" fill="rgba(15, 23, 42, 0.75)" stroke="rgba(6, 182, 212, 0.4)" stroke-width="1.5" />
+    <circle cx="830" cy="346" r="6" fill="#06b6d4" />
+    <text x="850" y="351" fill="#e2e8f0" class="pill-text">Cost Routers &amp; Fallbacks</text>
+  </g>
+
+  <!-- Top Badge -->
+  <g transform="translate(490, 75)">
+    <rect width="300" height="30" rx="15" fill="rgba(99, 102, 241, 0.15)" stroke="rgba(168, 85, 247, 0.5)" stroke-width="1" />
+    <text x="150" y="20" fill="#c084fc" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" text-anchor="middle" letter-spacing="0.05em">
+      ⚡ HIGH-EFFICIENCY AI INFERENCE
+    </text>
+  </g>
+
+  <!-- FOREGROUND: Primary Title and Subtitles (High Contrast & Clear) -->
+  <text x="640" y="165" text-anchor="middle" fill="url(#textGradient)" class="title-text" font-size="40">
+    LLM Token Optimization &amp; Cost Reduction
+  </text>
+
+  <text x="640" y="215" text-anchor="middle" fill="#94a3b8" class="subtitle-text" font-size="18">
+    Curated High-Performance Runtimes, Prompt Pruning Engines, Semantic Caches &amp; Cost Gateways
+  </text>
+
+  <text x="640" y="255" text-anchor="middle" fill="#64748b" class="subtitle-text" font-size="14">
+    Cut LLM API Bills by 40%–90% • Maximize Tokens/Sec • Production-Grade FOSS &amp; Enterprise Platforms
+  </text>
+
+  <!-- Modern Gradient Bottom Border -->
+  <rect x="0" y="436" width="1280" height="4" fill="url(#accentGlow)" />
+</svg>
